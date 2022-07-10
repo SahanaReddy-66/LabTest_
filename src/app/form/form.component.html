@@ -1,0 +1,30 @@
+<form [formGroup]="myForm">
+    <div>
+        <label for="">Name</label>
+        <input type="text" formControlName="name">
+        <br><br>
+        <label for=""> Address</label>
+        <input type="text" formControlName="address">
+        <br><br>
+        <label for="">Phone No</label>
+        <input type="number" formControlName="phone_number">
+        <br><br>
+        <label for="">Email</label>
+        <input type="email" formControlName="email">
+        <br><br>
+        <h4> Type Questions</h4>
+        <div formArrayName="arr" *ngFor="let a of myForm.get('arr').controls; let i = index" >
+            <div [formGroupName]="i" style="margin-bottom: 10px;" >
+
+                <label for="name">Question:</label>
+                <input type="text" name="Question" formControlName="Question" >
+                <br><br>
+                <label for="name">Answer:</label>
+                <input type="text" name="Answer" formControlName="Answer">
+                <br>
+                <button type="button" (click)="addItem()" class="add  btn btn-primary">Add Question</button>
+            </div>
+        </div>
+        <button type="submit" class="sub btn btn-primary" (click)="  Submit()">Submit</button>
+    </div>
+</form>
